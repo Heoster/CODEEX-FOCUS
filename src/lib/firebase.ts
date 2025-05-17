@@ -1,6 +1,7 @@
 
 import { initializeApp, getApps, getApp, type FirebaseOptions } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore'; // Added Firestore import
 
 const firebaseApiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
 const firebaseAuthDomain = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
@@ -11,13 +12,13 @@ const firebaseAppId = process.env.NEXT_PUBLIC_FIREBASE_APP_ID;
 const firebaseMeasurementId = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID;
 
 const requiredEnvVars: Record<string, string | undefined> = {
-  NEXT_PUBLIC_FIREBASE_API_KEY: "AIzaSyCg4mOcpCZjPTxYPi8bvvuJJYibd7NUaB4",
-  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: "focusforge-sepaz.firebaseapp.com",
-  NEXT_PUBLIC_FIREBASE_PROJECT_ID: "focusforge-sepaz",
+  NEXT_PUBLIC_FIREBASE_API_KEY: firebaseApiKey,
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: firebaseAuthDomain,
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: firebaseProjectId,
   // These are not strictly required for basic auth init, but good to check if you expect them
-  // NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: "focusforge-sepaz.firebasestorage.app",
-  // NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: focusforge-sepaz.firebasestorage.app,
-  // NEXT_PUBLIC_FIREBASE_APP_ID: 1:175219863291:web:3d4a9371c06a2610044a5e,
+  // NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: firebaseStorageBucket,
+  // NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: firebaseMessagingSenderId,
+  // NEXT_PUBLIC_FIREBASE_APP_ID: firebaseAppId,
 };
 
 const missingKeys = Object.entries(requiredEnvVars)
@@ -41,13 +42,13 @@ if (missingKeys.length > 0) {
 }
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCg4mOcpCZjPTxYPi8bvvuJJYibd7NUaB4",
-  authDomain: "focusforge-sepaz.firebaseapp.com",
-  projectId: "focusforge-sepaz",
-  storageBucket: "focusforge-sepaz.firebasestorage.app",
-  messagingSenderId: "175219863291",
-  appId: "1:175219863291:web:3d4a9371c06a2610044a5e",
-  measurementId: "G-4NZZZ9M905"
+  apiKey: firebaseApiKey,
+  authDomain: firebaseAuthDomain,
+  projectId: firebaseProjectId,
+  storageBucket: firebaseStorageBucket,
+  messagingSenderId: firebaseMessagingSenderId,
+  appId: firebaseAppId,
+  measurementId: firebaseMeasurementId
 };
 
 // Initialize Firebase
@@ -66,5 +67,6 @@ if (getApps().length === 0) {
 }
  
 const auth = getAuth(app);
+const db = getFirestore(app); // Initialize Firestore
 
-export { app, auth };
+export { app, auth, db }; // Export db
