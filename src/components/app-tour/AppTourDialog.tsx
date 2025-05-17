@@ -23,6 +23,7 @@ import {
   Rocket,
   ChevronLeft,
   ChevronRight,
+  Users, // Added Users icon
   type LucideIcon,
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
@@ -30,7 +31,7 @@ import { Progress } from '@/components/ui/progress';
 interface TourStep {
   title: string;
   content: React.ReactNode;
-  icon?: LucideIcon | React.FC<any>; // Allow regular Lucide icons or custom components like CodeexFocusLogo
+  icon?: LucideIcon | React.FC<any>; 
 }
 
 const tourSteps: TourStep[] = [
@@ -65,9 +66,14 @@ const tourSteps: TourStep[] = [
     content: 'Stay motivated by tracking your progress and earning badges for your achievements in the Rewards section. Gamify your learning journey and celebrate your successes!',
   },
   {
+    title: 'Community Hub', // Added Community step
+    icon: Users,
+    content: 'Connect with fellow learners in the Community Hub. Ask questions, share study tips, join discussions, and find study groups. (More features coming soon!)',
+  },
+  {
     title: 'Application Settings',
     icon: Settings,
-    content: 'Customize your CODEEX-FOCUS experience in the Settings area. (More personalization options will be added soon!)',
+    content: 'Customize your CODEEX-FOCUS experience in the Settings area. Adjust appearance, notification preferences, and manage your account.',
   },
   {
     title: "You're All Set!",
@@ -106,8 +112,8 @@ export function AppTourDialog({ isOpen, onOpenChange }: AppTourDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => {
       onOpenChange(open);
-      if (!open) { // Reset to first step if dialog is closed
-        setTimeout(() => setCurrentStep(0), 300); // Delay to allow close animation
+      if (!open) { 
+        setTimeout(() => setCurrentStep(0), 300); 
       }
     }}>
       <DialogContent className="sm:max-w-lg p-0">

@@ -11,6 +11,7 @@ import {
   Award,
   Settings,
   X,
+  Users, // Added Users icon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -23,6 +24,7 @@ const navItems = [
   { href: '/ai-assistant', label: 'CODEEX-FOCUS AI', icon: Brain },
   { href: '/tasks-notes', label: 'Tasks & Notes', icon: ListChecks },
   { href: '/rewards', label: 'Rewards', icon: Award },
+  { href: '/community', label: 'Community', icon: Users }, // Added Community
 ];
 
 interface AppSidebarProps {

@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation';
 
 interface AppHeaderProps {
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
-  setIsTourOpen: Dispatch<SetStateAction<boolean>>; // Added this prop
+  setIsTourOpen: Dispatch<SetStateAction<boolean>>; 
 }
 
 function getTitleFromPath(pathname: string): string {
@@ -19,6 +19,7 @@ function getTitleFromPath(pathname: string): string {
   if (pathname.startsWith('/ai-assistant')) return 'CODEEX-FOCUS AI Assistant';
   if (pathname.startsWith('/tasks-notes')) return 'Tasks & Notes';
   if (pathname.startsWith('/rewards')) return 'Motivation & Rewards';
+  if (pathname.startsWith('/community')) return 'Community Hub'; // Added Community
   if (pathname.startsWith('/settings')) return 'Settings';
   return 'CODEEX-FOCUS';
 }
@@ -43,7 +44,7 @@ export function AppHeader({ setSidebarOpen, setIsTourOpen }: AppHeaderProps) {
       <h1 className="hidden text-xl font-semibold text-foreground md:block md:flex-1">
         {pageTitle}
       </h1>
-      <UserNav setIsTourOpen={setIsTourOpen} /> {/* Passed setIsTourOpen */}
+      <UserNav setIsTourOpen={setIsTourOpen} />
     </header>
   );
 }
