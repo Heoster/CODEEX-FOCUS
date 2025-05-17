@@ -1,22 +1,24 @@
+
 'use client';
 
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FocusForgeLogo } from '@/components/icons';
+import { UserNav } from '@/components/layout/UserNav';
 import { usePathname } from 'next/navigation';
 
 interface AppHeaderProps {
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
-  pageTitle?: string;
 }
 
 function getTitleFromPath(pathname: string): string {
-  if (pathname === '/dashboard') return 'Dashboard';
-  if (pathname === '/planner') return 'Study Planner';
-  if (pathname === '/ai-assistant') return 'Wikinet AI Assistant';
-  if (pathname === '/tasks-notes') return 'Tasks & Notes';
-  if (pathname === '/rewards') return 'Motivation & Rewards';
+  if (pathname.startsWith('/dashboard')) return 'Dashboard';
+  if (pathname.startsWith('/planner')) return 'Study Planner';
+  if (pathname.startsWith('/ai-assistant')) return 'Wikinet AI Assistant';
+  if (pathname.startsWith('/tasks-notes')) return 'Tasks & Notes';
+  if (pathname.startsWith('/rewards')) return 'Motivation & Rewards';
+  if (pathname.startsWith('/settings')) return 'Settings';
   return 'FocusForge';
 }
 
@@ -25,7 +27,7 @@ export function AppHeader({ setSidebarOpen }: AppHeaderProps) {
   const pageTitle = getTitleFromPath(pathname);
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-md md:justify-end">
+    <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-md">
       <div className="flex items-center gap-4 md:hidden">
         <Button
           variant="ghost"
@@ -37,11 +39,10 @@ export function AppHeader({ setSidebarOpen }: AppHeaderProps) {
         </Button>
         <FocusForgeLogo />
       </div>
-      <h1 className="hidden text-xl font-semibold text-foreground md:block">
+      <h1 className="hidden text-xl font-semibold text-foreground md:block md:flex-1">
         {pageTitle}
       </h1>
-      {/* Placeholder for User Profile Dropdown */}
-      {/* <UserNav /> */}
+      <UserNav />
     </header>
   );
 }

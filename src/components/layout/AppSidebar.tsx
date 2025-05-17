@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -45,6 +46,7 @@ export function AppSidebar({ isOpen, setIsOpen }: AppSidebarProps) {
         <div
           className="fixed inset-0 z-30 bg-black/50 md:hidden"
           onClick={() => setIsOpen(false)}
+          aria-hidden="true"
         />
       )}
 
@@ -65,10 +67,10 @@ export function AppSidebar({ isOpen, setIsOpen }: AppSidebarProps) {
           {navItems.map((item) => (
             <Button
               key={item.label}
-              variant={pathname === item.href ? 'default' : 'ghost'}
+              variant={pathname.startsWith(item.href) ? 'default' : 'ghost'}
               className={cn(
                 'w-full justify-start text-base',
-                pathname === item.href
+                pathname.startsWith(item.href)
                   ? 'bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90'
                   : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
               )}
@@ -83,11 +85,16 @@ export function AppSidebar({ isOpen, setIsOpen }: AppSidebarProps) {
         </nav>
         <div className="mt-auto border-t border-sidebar-border p-4">
           <Button
-            variant="ghost"
-            className="w-full justify-start text-base text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+            variant={pathname.startsWith('/settings') ? 'secondary' : 'ghost'}
+            className={cn(
+                'w-full justify-start text-base',
+                 pathname.startsWith('/settings')
+                  ? 'bg-sidebar-accent text-sidebar-accent-foreground hover:bg-sidebar-accent/90'
+                  : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
+                )}
             asChild
           >
-            <Link href="/settings" onClick={handleLinkClick}> {/* Placeholder for settings page */}
+            <Link href="/settings" onClick={handleLinkClick}>
               <Settings className="mr-3 h-5 w-5" />
               Settings
             </Link>
