@@ -18,18 +18,33 @@ if (!firebaseAPIKey) {
     "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
   );
 }
-
 const firebaseConfig = {
-  apiKey: firebaseAPIKey,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCg4mOcpCZjPTxYPi8bvvuJJYibd7NUaB4",
+  authDomain: "focusforge-sepaz.firebaseapp.com",
+  projectId: "focusforge-sepaz",
+  storageBucket: "focusforge-sepaz.firebasestorage.app",
+  messagingSenderId: "175219863291",
+  appId: "1:175219863291:web:3d4a9371c06a2610044a5e",
+  measurementId: "G-4NZZZ9M905"
 };
 
 // Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+let app;
+if (getApps().length === 0) {
+  try {
+    app = initializeApp(firebaseConfig);
+  } catch (error) {
+    console.error("Firebase initialization error:", error);
+    // Depending on the error, you might want to throw it or handle it gracefully
+    // For "auth/invalid-api-key", this catch block might not be reached if the SDK throws it internally earlier.
+    throw new Error(
+      `Firebase failed to initialize. Please check your Firebase console for issues with your project or API key. Original error: ${error}`
+    );
+  }
+} else {
+  app = getApp();
+}
+
 const auth = getAuth(app);
 
 export { app, auth };
