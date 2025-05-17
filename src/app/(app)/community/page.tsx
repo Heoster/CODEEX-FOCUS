@@ -1,14 +1,14 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input'; // Added import for Input
+import { Input } from '@/components/ui/input'; 
 import { MessageSquare, Users, Edit3, Search, BookOpen, Brain } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CommunityPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
       <div className="flex flex-col items-center text-center space-y-3">
         <Users className="h-16 w-16 text-primary" />
         <h1 className="text-4xl font-bold tracking-tight text-foreground">CODEEX-FOCUS Community Hub</h1>
@@ -18,7 +18,7 @@ export default function CommunityPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <MessageSquare className="h-6 w-6 text-primary" />
@@ -36,7 +36,7 @@ export default function CommunityPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Users className="h-6 w-6 text-primary" />
@@ -54,11 +54,11 @@ export default function CommunityPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg hover:shadow-xl transition-shadow">
+        <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BookOpen className="h-6 w-6 text-primary" />
-              Shared Notes & Resources
+              Shared Notes &amp; Resources
             </CardTitle>
             <CardDescription>Access and contribute to a library of community-curated study materials.</CardDescription>
           </CardHeader>
@@ -73,13 +73,13 @@ export default function CommunityPage() {
         </Card>
       </div>
 
-      <Card className="shadow-xl">
+      <Card className="shadow-xl hover:shadow-2xl hover:scale-[1.005] transition-all duration-300 ease-in-out">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Search className="h-6 w-6 text-primary" />
             Find Members
           </CardTitle>
-          <CardDescription>Connect with other CODEEX-FOCUS users. (Profiles & advanced search coming soon)</CardDescription>
+          <CardDescription>Connect with other CODEEX-FOCUS users. (Profiles &amp; advanced search coming soon)</CardDescription>
         </CardHeader>
         <CardContent>
           <Input type="search" placeholder="Search for users by name or interest..." className="mb-4" />
@@ -90,7 +90,7 @@ export default function CommunityPage() {
               { name: 'Maria Garcia', subject: 'History, Literature', avatarHint: 'learner portrait' },
               { name: 'Sam Chen', subject: 'Biology, Chemistry', avatarHint: 'user icon' },
             ].map((user, i) => (
-                 <Card key={i} className="p-4 flex flex-col items-center space-y-2 shadow-md hover:shadow-lg transition-shadow">
+                 <Card key={i} className="p-4 flex flex-col items-center space-y-2 shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200 ease-in-out">
                     <Image 
                       src={`https://placehold.co/80x80.png`} 
                       alt={`${user.name} Avatar`} 
@@ -113,5 +113,3 @@ export default function CommunityPage() {
     </div>
   );
 }
-
-    

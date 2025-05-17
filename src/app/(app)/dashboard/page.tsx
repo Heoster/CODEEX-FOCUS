@@ -11,7 +11,7 @@ export default function DashboardPage() {
   const pointsEarned = 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Welcome to CODEEX-FOCUS!</h1>
@@ -28,26 +28,23 @@ export default function DashboardPage() {
           value={upcomingTasks}
           icon={ListChecks}
           description="Tasks due soon"
-          className="shadow-lg hover:shadow-xl transition-shadow"
         />
         <OverviewCard
           title="Study Sessions Today"
           value={studySessionsToday}
           icon={CalendarClock}
           description="Scheduled for today"
-          className="shadow-lg hover:shadow-xl transition-shadow"
         />
         <OverviewCard
           title="Points Earned"
           value={pointsEarned}
           icon={Award}
           description="Keep up the great work!"
-          className="shadow-lg hover:shadow-xl transition-shadow"
         />
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <Card className="shadow-lg">
+        <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Brain className="h-6 w-6 text-primary" />
@@ -63,7 +60,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Sparkles className="h-6 w-6 text-accent" />

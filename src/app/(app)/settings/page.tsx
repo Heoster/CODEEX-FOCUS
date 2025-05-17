@@ -8,13 +8,13 @@ import { Palette, Bell, Shield, UserCircle } from 'lucide-react';
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">Settings</h1>
         <p className="text-muted-foreground">Manage your account and application preferences.</p>
       </div>
 
-      <Card className="shadow-lg">
+      <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.005] transition-all duration-300 ease-in-out">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><UserCircle className="h-5 w-5 text-primary" /> Profile</CardTitle>
           <CardDescription>Update your personal information.</CardDescription>
@@ -32,7 +32,7 @@ export default function SettingsPage() {
         </CardContent>
       </Card>
 
-      <Card className="shadow-lg">
+      <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.005] transition-all duration-300 ease-in-out">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><Palette className="h-5 w-5 text-primary" /> Appearance</CardTitle>
           <CardDescription>Customize the look and feel of CODEEX-FOCUS.</CardDescription>
@@ -47,13 +47,14 @@ export default function SettingsPage() {
           </div>
            <div className="space-y-2">
             <Label htmlFor="accent-color">Accent Color</Label>
-            <Input id="accent-color" type="color" defaultValue="#4285F4" className="w-24" />
-            <p className="text-sm text-muted-foreground">Personalize your accent color.</p>
+            <Input id="accent-color" type="color" defaultValue="#FF7F50" className="w-24 h-10 rounded-md" /> 
+            {/* Updated defaultValue to match new accent color */}
+            <p className="text-sm text-muted-foreground">Personalize your accent color. (Note: Full theme integration for custom accent needs more work)</p>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="shadow-lg">
+      <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.005] transition-all duration-300 ease-in-out">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><Bell className="h-5 w-5 text-primary" /> Notifications</CardTitle>
           <CardDescription>Manage how you receive notifications from CODEEX-FOCUS.</CardDescription>
@@ -76,7 +77,7 @@ export default function SettingsPage() {
         </CardContent>
       </Card>
       
-      <Card className="shadow-lg">
+      <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.005] transition-all duration-300 ease-in-out">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><Shield className="h-5 w-5 text-primary" /> Account</CardTitle>
           <CardDescription>Manage your account data and security settings.</CardDescription>

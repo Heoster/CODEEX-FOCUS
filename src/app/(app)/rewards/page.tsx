@@ -13,21 +13,21 @@ export default function RewardsPage() {
   const leaderboardRankMessage = "No rank yet. Get started!";
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">Motivation & Rewards</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">Motivation &amp; Rewards</h1>
         <p className="text-muted-foreground">Track your progress, earn badges, and stay motivated!</p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        <OverviewCard title="Total Points" value={userPoints} icon={Award} className="shadow-lg" />
-        <OverviewCard title="Weekly Streak" value={`${weeklyStreak} Days`} icon={Zap} className="shadow-lg" />
-        <OverviewCard title="Leaderboard Position" value={leaderboardRankMessage} icon={TrendingUp} className="shadow-lg" />
+        <OverviewCard title="Total Points" value={userPoints} icon={Award} />
+        <OverviewCard title="Weekly Streak" value={`${weeklyStreak} Days`} icon={Zap} />
+        <OverviewCard title="Leaderboard Position" value={leaderboardRankMessage} icon={TrendingUp} />
       </div>
 
       <BadgesDisplay />
 
-      <Card className="shadow-xl">
+      <Card className="shadow-xl hover:shadow-2xl hover:scale-[1.005] transition-all duration-300 ease-in-out">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><Users className="h-6 w-6 text-primary"/>Leaderboard</CardTitle>
           <CardDescription>See how you rank among other CODEEX-FOCUS users. Climb the ranks by earning points!</CardDescription>
@@ -59,7 +59,7 @@ export default function RewardsPage() {
         </CardContent>
       </Card>
 
-       <Card className="shadow-xl">
+       <Card className="shadow-xl hover:shadow-2xl hover:scale-[1.005] transition-all duration-300 ease-in-out">
         <CardHeader>
           <CardTitle>Quote of the Day</CardTitle>
           <CardDescription>A little inspiration to keep you going.</CardDescription>

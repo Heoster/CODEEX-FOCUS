@@ -6,7 +6,7 @@ import { Wand2, Newspaper, HelpCircle } from 'lucide-react';
 
 export default function AiAssistantPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">CODEEX-FOCUS AI Assistant</h1>
         <p className="text-muted-foreground">Your intelligent study partner. Powered by Genkit.</p>
@@ -21,17 +21,17 @@ export default function AiAssistantPage() {
             <Newspaper className="mr-2 h-5 w-5" /> Summarizer
           </TabsTrigger>
           <TabsTrigger value="qa" className="text-base py-2.5">
-            <HelpCircle className="mr-2 h-5 w-5" /> Q&A
+            <HelpCircle className="mr-2 h-5 w-5" /> Q&amp;A
           </TabsTrigger>
         </TabsList>
         
-        <TabsContent value="study-plan">
+        <TabsContent value="study-plan" className="animate-in fade-in-0 duration-500">
           <GenerateStudyPlanForm />
         </TabsContent>
-        <TabsContent value="summarize">
+        <TabsContent value="summarize" className="animate-in fade-in-0 duration-500">
           <SummarizeContentForm />
         </TabsContent>
-        <TabsContent value="qa">
+        <TabsContent value="qa" className="animate-in fade-in-0 duration-500">
           <AnswerQuestionForm />
         </TabsContent>
       </Tabs>
