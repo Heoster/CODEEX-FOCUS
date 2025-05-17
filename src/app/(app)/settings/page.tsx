@@ -8,7 +8,7 @@ import { Palette, Bell, Shield, UserCircle } from 'lucide-react';
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">Settings</h1>
         <p className="text-muted-foreground">Manage your account and application preferences.</p>

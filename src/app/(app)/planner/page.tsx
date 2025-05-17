@@ -1,9 +1,10 @@
+
 import { PomodoroTimer } from '@/components/planner/PomodoroTimer';
 import { StudyCalendar } from '@/components/planner/StudyCalendar';
 
 export default function PlannerPage() {
   return (
-    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">Study Planner</h1>
         <p className="text-muted-foreground">Organize your study sessions and stay focused.</p>

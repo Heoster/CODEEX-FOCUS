@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export default function CommunityPage() {
   return (
-    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div className="flex flex-col items-center text-center space-y-3">
         <Users className="h-16 w-16 text-primary" />
         <h1 className="text-4xl font-bold tracking-tight text-foreground">CODEEX-FOCUS Community Hub</h1>

@@ -12,13 +12,13 @@ const firebaseAppId = process.env.NEXT_PUBLIC_FIREBASE_APP_ID;
 const firebaseMeasurementId = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID;
 
 const requiredEnvVars: Record<string, string | undefined> = {
-  NEXT_PUBLIC_FIREBASE_API_KEY: firebaseApiKey,
-  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: firebaseAuthDomain,
-  NEXT_PUBLIC_FIREBASE_PROJECT_ID: firebaseProjectId,
+  NEXT_PUBLIC_FIREBASE_API_KEY:"AIzaSyCg4mOcpCZjPTxYPi8bvvuJJYibd7NUaB4",
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN:  "focusforge-sepaz.firebaseapp.com",
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID:  "focusforge-sepaz",
   // These are not strictly required for basic auth init, but good to check if you expect them
-  // NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: firebaseStorageBucket,
-  // NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: firebaseMessagingSenderId,
-  // NEXT_PUBLIC_FIREBASE_APP_ID: firebaseAppId,
+  // NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:  "focusforge-sepaz.firebasestorage.app",
+  // NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:  "175219863291",
+  // NEXT_PUBLIC_FIREBASE_APP_ID: "1:175219863291:web:3d4a9371c06a2610044a5e",
 };
 
 const missingKeys = Object.entries(requiredEnvVars)
@@ -42,13 +42,13 @@ if (missingKeys.length > 0) {
 }
 
 const firebaseConfig = {
-  apiKey: firebaseApiKey,
-  authDomain: firebaseAuthDomain,
-  projectId: firebaseProjectId,
-  storageBucket: firebaseStorageBucket,
-  messagingSenderId: firebaseMessagingSenderId,
-  appId: firebaseAppId,
-  measurementId: firebaseMeasurementId
+  apiKey: "AIzaSyCg4mOcpCZjPTxYPi8bvvuJJYibd7NUaB4",
+  authDomain: "focusforge-sepaz.firebaseapp.com",
+  projectId: "focusforge-sepaz",
+  storageBucket: "focusforge-sepaz.firebasestorage.app",
+  messagingSenderId: "175219863291",
+  appId: "1:175219863291:web:3d4a9371c06a2610044a5e",
+  measurementId: "G-4NZZZ9M905"
 };
 
 // Initialize Firebase

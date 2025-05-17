@@ -1,3 +1,4 @@
+
 import { OverviewCard } from '@/components/dashboard/OverviewCard';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,7 @@ export default function DashboardPage() {
   const pointsEarned = 0;
 
   return (
-    <div className="space-y-6 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
+    <div className="space-y-6 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Welcome to CODEEX-FOCUS!</h1>

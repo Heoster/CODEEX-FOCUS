@@ -5,19 +5,19 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import { MessageSquare, PlusCircle, Search, Users, FileText, Brain, Beaker, Laptop } from 'lucide-react';
+import { MessageSquare, PlusCircle, Search, Users, FileText, Brain, Beaker, Laptop, FlaskConical } from 'lucide-react';
 import Link from 'next/link';
 import type { LucideIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { collection, onSnapshot, type FirestoreError } from 'firebase/firestore';
-import { db } from '@/lib/firebase'; // Assuming db is exported from your firebase setup
+import { db } from '@/lib/firebase'; 
 import { Loader2 } from 'lucide-react';
 
 interface ForumCategory {
   id: string;
   name: string;
   description: string;
-  iconName: string; // Store name of the icon
+  iconName: string; 
   topics: number;
   posts: number;
 }
@@ -25,12 +25,12 @@ interface ForumCategory {
 const iconMap: Record<string, LucideIcon> = {
   MessageSquare,
   Brain,
-  Users, // Could also be Group, Users2, etc.
+  Users, 
   FileText,
-  Laptop, // Or Tablet, Smartphone
-  Beaker, // Good for science
+  Laptop, 
+  Beaker,
+  FlaskConical,
   Search,
-  // Add more as needed
 };
 
 
@@ -52,11 +52,11 @@ export default function ForumsPage() {
       setLoading(false);
     });
 
-    return () => unsubscribe(); // Cleanup listener on component unmount
+    return () => unsubscribe(); 
   }, []);
 
   return (
-    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Discussion Forums</h1>
@@ -100,7 +100,7 @@ export default function ForumsPage() {
       {!loading && !error && (
         <div className="grid grid-cols-1 gap-6">
           {forumCategories.map((category) => {
-            const Icon = iconMap[category.iconName] || MessageSquare; // Default icon
+            const Icon = iconMap[category.iconName] || MessageSquare; 
             return (
               <Card key={category.id} className="shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out">
                 <CardHeader className="pb-4">
@@ -132,7 +132,7 @@ export default function ForumsPage() {
       )}
       {!loading && !error && forumCategories.length === 0 && (
          <p className="text-center text-sm text-muted-foreground mt-8">
-          No forum categories found. An admin may need to create some!
+          No forum categories found. An admin may need to create some in Firestore!
         </p>
       )}
        {forumCategories.length > 0 && (

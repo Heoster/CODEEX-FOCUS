@@ -1,3 +1,4 @@
+
 import { GenerateStudyPlanForm } from '@/components/ai-assistant/GenerateStudyPlanForm';
 import { SummarizeContentForm } from '@/components/ai-assistant/SummarizeContentForm';
 import { AnswerQuestionForm } from '@/components/ai-assistant/AnswerQuestionForm';
@@ -6,7 +7,7 @@ import { Wand2, Newspaper, HelpCircle } from 'lucide-react';
 
 export default function AiAssistantPage() {
   return (
-    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-8 duration-700 ease-out">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">CODEEX-FOCUS AI Assistant</h1>
         <p className="text-muted-foreground">Your intelligent study partner. Powered by Genkit.</p>
