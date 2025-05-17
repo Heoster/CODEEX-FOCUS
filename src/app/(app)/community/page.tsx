@@ -1,7 +1,8 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Users, Edit3, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input'; // Added import for Input
+import { MessageSquare, Users, Edit3, Search, BookOpen, Brain } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -45,10 +46,10 @@ export default function CommunityPage() {
           </CardHeader>
           <CardContent>
             <p className="mb-4 text-muted-foreground">
-              Find accountability partners and peers to tackle subjects together. (Feature in development)
+              Collaborate with peers on specific subjects or projects. (Feature in active development)
             </p>
-            <Button asChild className="w-full" variant="outline">
-              <Link href="/community/groups">Find Groups</Link>
+            <Button asChild className="w-full" variant="outline" disabled>
+              <Link href="/community/groups">Find Groups (Coming Soon)</Link>
             </Button>
           </CardContent>
         </Card>
@@ -56,17 +57,17 @@ export default function CommunityPage() {
         <Card className="shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Edit3 className="h-6 w-6 text-primary" />
+              <BookOpen className="h-6 w-6 text-primary" />
               Shared Notes & Resources
             </CardTitle>
             <CardDescription>Access and contribute to a library of community-curated study materials.</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="mb-4 text-muted-foreground">
-              Discover helpful notes, summaries, and resources shared by other users. (Feature in development)
+              Discover helpful notes, summaries, and resources shared by other users. (Feature in active development)
             </p>
-            <Button asChild className="w-full" variant="outline">
-              <Link href="/community/resources">Explore Resources</Link>
+            <Button asChild className="w-full" variant="outline" disabled>
+              <Link href="/community/resources">Explore Resources (Coming Soon)</Link>
             </Button>
           </CardContent>
         </Card>
@@ -78,26 +79,39 @@ export default function CommunityPage() {
             <Search className="h-6 w-6 text-primary" />
             Find Members
           </CardTitle>
-          <CardDescription>Connect with other CODEEX-FOCUS users.</CardDescription>
+          <CardDescription>Connect with other CODEEX-FOCUS users. (Profiles & advanced search coming soon)</CardDescription>
         </CardHeader>
         <CardContent>
           <Input type="search" placeholder="Search for users by name or interest..." className="mb-4" />
           {/* Placeholder for member list */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[1,2,3].map((i) => (
-                 <Card key={i} className="p-4 flex flex-col items-center space-y-2">
-                    <Image src="https://placehold.co/80x80.png" alt="User Avatar" width={80} height={80} className="rounded-full" data-ai-hint="person avatar" />
-                    <p className="font-semibold">User Name {i}</p>
-                    <p className="text-xs text-muted-foreground">Studying: Subject {i}</p>
-                    <Button size="sm" variant="outline">View Profile</Button>
+            {[
+              { name: 'Alex Lee', subject: 'Calculus, Physics', avatarHint: 'student avatar' },
+              { name: 'Maria Garcia', subject: 'History, Literature', avatarHint: 'learner portrait' },
+              { name: 'Sam Chen', subject: 'Biology, Chemistry', avatarHint: 'user icon' },
+            ].map((user, i) => (
+                 <Card key={i} className="p-4 flex flex-col items-center space-y-2 shadow-md hover:shadow-lg transition-shadow">
+                    <Image 
+                      src={`https://placehold.co/80x80.png`} 
+                      alt={`${user.name} Avatar`} 
+                      width={80} 
+                      height={80} 
+                      className="rounded-full" 
+                      data-ai-hint={user.avatarHint} 
+                    />
+                    <p className="font-semibold text-foreground">{user.name}</p>
+                    <p className="text-xs text-muted-foreground text-center">Studying: {user.subject}</p>
+                    <Button size="sm" variant="outline" disabled>View Profile (Soon)</Button>
                  </Card>
             ))}
           </div>
-          <p className="mt-4 text-sm text-center text-muted-foreground">
-            User profiles and search functionality are currently under development.
+          <p className="mt-6 text-sm text-center text-muted-foreground">
+            User profiles and advanced search functionality are currently under development.
           </p>
         </CardContent>
       </Card>
     </div>
   );
 }
+
+    

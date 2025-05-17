@@ -19,7 +19,8 @@ function getTitleFromPath(pathname: string): string {
   if (pathname.startsWith('/ai-assistant')) return 'CODEEX-FOCUS AI Assistant';
   if (pathname.startsWith('/tasks-notes')) return 'Tasks & Notes';
   if (pathname.startsWith('/rewards')) return 'Motivation & Rewards';
-  if (pathname.startsWith('/community')) return 'Community Hub'; // Added Community
+  if (pathname.startsWith('/community/forums')) return 'Community Hub - Forums';
+  if (pathname.startsWith('/community')) return 'Community Hub';
   if (pathname.startsWith('/settings')) return 'Settings';
   return 'CODEEX-FOCUS';
 }
@@ -48,3 +49,5 @@ export function AppHeader({ setSidebarOpen, setIsTourOpen }: AppHeaderProps) {
     </header>
   );
 }
+
+    
