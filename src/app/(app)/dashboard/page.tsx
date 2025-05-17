@@ -5,10 +5,10 @@ import { ListChecks, CalendarClock, Brain, Award, Sparkles } from 'lucide-react'
 import Link from 'next/link';
 
 export default function DashboardPage() {
-  // Mock data for demonstration
-  const upcomingTasks = 5;
-  const studySessionsToday = 2;
-  const pointsEarned = 1250;
+  // Mock data reset for new user
+  const upcomingTasks = 0;
+  const studySessionsToday = 0;
+  const pointsEarned = 0;
 
   return (
     <div className="space-y-6">

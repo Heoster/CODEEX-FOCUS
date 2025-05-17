@@ -4,10 +4,10 @@ import { Award, TrendingUp, Zap } from 'lucide-react';
 import { OverviewCard } from '@/components/dashboard/OverviewCard';
 
 export default function RewardsPage() {
-  // Mock data
-  const userPoints = 1250;
-  const weeklyStreak = 3; // days
-  const leaderboardRank = 12;
+  // Mock data reset for new user
+  const userPoints = 0;
+  const weeklyStreak = 0; // days
+  const leaderboardRankMessage = "No rank yet. Get started!";
 
   return (
     <div className="space-y-8">
@@ -19,7 +19,7 @@ export default function RewardsPage() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <OverviewCard title="Total Points" value={userPoints} icon={Award} className="shadow-lg" />
         <OverviewCard title="Weekly Streak" value={`${weeklyStreak} Days`} icon={Zap} className="shadow-lg" />
-        <OverviewCard title="Leaderboard Rank" value={`#${leaderboardRank}`} icon={TrendingUp} className="shadow-lg" />
+        <OverviewCard title="Leaderboard Rank" value={leaderboardRankMessage} icon={TrendingUp} className="shadow-lg" />
       </div>
 
       <BadgesDisplay />

@@ -6,21 +6,18 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { PlusCircle, Save, Trash2, Edit3 } from 'lucide-react';
+import { PlusCircle, Save, Trash2 } from 'lucide-react';
 import { format } from 'date-fns';
 
-const initialNotes: Note[] = [
-  { id: '1', title: 'Lecture Recap - Quantum Physics', content: '# Quantum Entanglement\n\n- Key concepts:\n  - Superposition\n  - Non-locality\n\n## Experiments\n\n- Bell\'s theorem', createdAt: new Date(), updatedAt: new Date() },
-  { id: '2', title: 'Project Ideas - AI Ethics', content: '# Brainstorming\n\n1. Bias in algorithms\n2. Autonomous decision making\n3. Privacy concerns with large language models', createdAt: new Date(), updatedAt: new Date() },
-];
+const initialNotes: Note[] = []; // Made fresh for new user
 
 
 export function NotesEditor() {
   const [notes, setNotes] = useState<Note[]>(initialNotes);
-  const [selectedNote, setSelectedNote] = useState<Note | null>(notes[0] || null);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null); // Made fresh
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [newNoteTitle, setNewNoteTitle] = useState('');
-  const [currentContent, setCurrentContent] = useState(selectedNote?.content || '');
+  const [currentContent, setCurrentContent] = useState(''); // Made fresh
 
   const handleSelectNote = (note: Note) => {
     setSelectedNote(note);
@@ -31,15 +28,18 @@ export function NotesEditor() {
   const handleContentChange = (content: string) => {
     setCurrentContent(content);
     if (selectedNote && !isCreatingNew) {
-      setNotes(notes.map(n => n.id === selectedNote.id ? { ...n, content, updatedAt: new Date() } : n));
+      const updatedNote = { ...selectedNote, content, updatedAt: new Date() };
+      setNotes(notes.map(n => n.id === selectedNote.id ? updatedNote : n));
+      setSelectedNote(updatedNote); 
       // In a real app, debounce this save operation
     }
   };
   
   const handleTitleChange = (title: string) => {
      if (selectedNote && !isCreatingNew) {
-        setNotes(notes.map(n => n.id === selectedNote.id ? { ...n, title, updatedAt: new Date() } : n));
-        setSelectedNote(prev => prev ? {...prev, title} : null);
+        const updatedNote = { ...selectedNote, title, updatedAt: new Date() };
+        setNotes(notes.map(n => n.id === selectedNote.id ? updatedNote : n));
+        setSelectedNote(updatedNote);
      }
   }
 
@@ -56,20 +56,23 @@ export function NotesEditor() {
     setSelectedNote(newNote);
     setIsCreatingNew(false);
     setNewNoteTitle('');
+    // setCurrentContent(''); // Keep content if user was typing
   };
 
   const startNewNote = () => {
     setSelectedNote(null);
     setIsCreatingNew(true);
-    setCurrentContent('');
+    setCurrentContent(''); // Clear content for new note
     setNewNoteTitle('');
   };
   
   const deleteNote = (noteId: string) => {
     setNotes(notes.filter(n => n.id !== noteId));
     if (selectedNote?.id === noteId) {
-      setSelectedNote(notes.length > 1 ? notes.filter(n => n.id !== noteId)[0] : null);
-      setCurrentContent(notes.length > 1 ? notes.filter(n => n.id !== noteId)[0].content : '');
+      const remainingNotes = notes.filter(n => n.id !== noteId);
+      const newSelectedNote = remainingNotes.length > 0 ? remainingNotes[0] : null;
+      setSelectedNote(newSelectedNote);
+      setCurrentContent(newSelectedNote ? newSelectedNote.content : '');
     }
   }
 

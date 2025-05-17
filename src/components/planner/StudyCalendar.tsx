@@ -23,7 +23,7 @@ import { format } from 'date-fns';
 
 export function StudyCalendar() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
-  const [studySessions, setStudySessions] = useState<StudySession[]>([]);
+  const [studySessions, setStudySessions] = useState<StudySession[]>([]); // Made fresh
   const [currentSession, setCurrentSession] = useState<Partial<StudySession> | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -48,14 +48,23 @@ export function StudyCalendar() {
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    
+    const title = formData.get('title') as string;
+    const subject = formData.get('subject') as string;
+    const notes = formData.get('notes') as string;
+    // Simplified date/time handling - in a real app, use proper date/time pickers
+    const startTime = selectedDate ? new Date(selectedDate) : new Date(); 
+    const endTime = selectedDate ? new Date(selectedDate) : new Date();
+    // For demonstration, let's assume start and end times are the same day.
+    // You might want to add time inputs for a real application.
+
+
     const sessionData: Partial<StudySession> = {
-      title: formData.get('title') as string,
-      subject: formData.get('subject') as string,
-      notes: formData.get('notes') as string,
-      // Assuming date is part of selectedDate, and time from inputs
-      // This needs more robust date/time handling in a real app
-      startTime: new Date(selectedDate || Date.now()), // Simplified
-      endTime: new Date(selectedDate || Date.now()), // Simplified
+      title,
+      subject,
+      notes,
+      startTime, 
+      endTime, 
     };
 
     if (currentSession?.id) {
@@ -104,13 +113,13 @@ export function StudyCalendar() {
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button onClick={openAddSessionDialog} className="bg-primary hover:bg-primary/90">
+              <Button onClick={openAddSessionDialog} className="bg-primary hover:bg-primary/90" disabled={!selectedDate}>
                 <PlusCircle className="mr-2 h-5 w-5" /> Add Session
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>{currentSession?.id ? 'Edit' : 'Add'} Study Session</DialogTitle>
+                <DialogTitle>{currentSession?.id ? 'Edit' : 'Add'} Study Session for {selectedDate ? format(selectedDate, 'PPP') : ''}</DialogTitle>
                 <DialogDescription>
                   Fill in the details for your study session.
                 </DialogDescription>
@@ -124,7 +133,7 @@ export function StudyCalendar() {
                   <Label htmlFor="subject">Subject</Label>
                   <Input id="subject" name="subject" defaultValue={currentSession?.subject || ''} required />
                 </div>
-                {/* Add time inputs here if needed */}
+                {/* Add time inputs here if needed for more precise scheduling */}
                 <div>
                   <Label htmlFor="notes">Notes (Optional)</Label>
                   <Textarea id="notes" name="notes" defaultValue={currentSession?.notes || ''} />

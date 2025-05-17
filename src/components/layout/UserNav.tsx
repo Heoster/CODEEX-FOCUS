@@ -1,6 +1,7 @@
 
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,12 +16,16 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { auth } from '@/lib/firebase';
 import { signOut } from 'firebase/auth';
-import { LogOut, Settings, UserCircle } from 'lucide-react';
+import { LogOut, Settings, UserCircle, Lightbulb } from 'lucide-react'; // Added Lightbulb
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 
-export function UserNav() {
+interface UserNavProps {
+  setIsTourOpen?: Dispatch<SetStateAction<boolean>>; // Optional for now
+}
+
+export function UserNav({ setIsTourOpen }: UserNavProps) {
   const { user } = useAuth();
   const router = useRouter();
   const { toast } = useToast();
@@ -82,6 +87,12 @@ export function UserNav() {
                 <span>Settings</span>
             </Link>
           </DropdownMenuItem>
+          {setIsTourOpen && (
+            <DropdownMenuItem onClick={() => setIsTourOpen(true)}>
+              <Lightbulb className="mr-2 h-4 w-4" />
+              <span>App Tour</span>
+            </DropdownMenuItem>
+          )}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleSignOut}>

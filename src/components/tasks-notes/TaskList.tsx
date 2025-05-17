@@ -11,12 +11,7 @@ import { PlusCircle, Trash2, Edit3, GripVertical } from 'lucide-react';
 import { Label } from '../ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger, DialogClose } from '../ui/dialog';
 
-const initialTasks: Task[] = [
-  { id: '1', text: 'Read Chapter 3 of Biology', completed: false, priority: 'high' },
-  { id: '2', text: 'Complete Math homework Set 5', completed: true, priority: 'medium' },
-  { id: '3', text: 'Prepare presentation for History class', completed: false, priority: 'high' },
-  { id: '4', text: 'Review notes for Physics quiz', completed: false, priority: 'low' },
-];
+const initialTasks: Task[] = []; // Made fresh for new user
 
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);

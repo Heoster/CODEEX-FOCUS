@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation';
 
 interface AppHeaderProps {
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  setIsTourOpen: Dispatch<SetStateAction<boolean>>; // Added this prop
 }
 
 function getTitleFromPath(pathname: string): string {
@@ -22,7 +23,7 @@ function getTitleFromPath(pathname: string): string {
   return 'FocusForge';
 }
 
-export function AppHeader({ setSidebarOpen }: AppHeaderProps) {
+export function AppHeader({ setSidebarOpen, setIsTourOpen }: AppHeaderProps) {
   const pathname = usePathname();
   const pageTitle = getTitleFromPath(pathname);
 
@@ -42,7 +43,7 @@ export function AppHeader({ setSidebarOpen }: AppHeaderProps) {
       <h1 className="hidden text-xl font-semibold text-foreground md:block md:flex-1">
         {pageTitle}
       </h1>
-      <UserNav />
+      <UserNav setIsTourOpen={setIsTourOpen} /> {/* Passed setIsTourOpen */}
     </header>
   );
 }
