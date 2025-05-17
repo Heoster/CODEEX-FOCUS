@@ -4,7 +4,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { FocusForgeLogo } from '@/components/icons';
+import { CodeexFocusLogo } from '@/components/icons';
 import { UserNav } from '@/components/layout/UserNav';
 import { usePathname } from 'next/navigation';
 
@@ -16,11 +16,11 @@ interface AppHeaderProps {
 function getTitleFromPath(pathname: string): string {
   if (pathname.startsWith('/dashboard')) return 'Dashboard';
   if (pathname.startsWith('/planner')) return 'Study Planner';
-  if (pathname.startsWith('/ai-assistant')) return 'Wikinet AI Assistant';
+  if (pathname.startsWith('/ai-assistant')) return 'CODEEX-FOCUS AI Assistant';
   if (pathname.startsWith('/tasks-notes')) return 'Tasks & Notes';
   if (pathname.startsWith('/rewards')) return 'Motivation & Rewards';
   if (pathname.startsWith('/settings')) return 'Settings';
-  return 'FocusForge';
+  return 'CODEEX-FOCUS';
 }
 
 export function AppHeader({ setSidebarOpen, setIsTourOpen }: AppHeaderProps) {
@@ -38,7 +38,7 @@ export function AppHeader({ setSidebarOpen, setIsTourOpen }: AppHeaderProps) {
         >
           <Menu className="h-6 w-6" />
         </Button>
-        <FocusForgeLogo />
+        <CodeexFocusLogo />
       </div>
       <h1 className="hidden text-xl font-semibold text-foreground md:block md:flex-1">
         {pageTitle}

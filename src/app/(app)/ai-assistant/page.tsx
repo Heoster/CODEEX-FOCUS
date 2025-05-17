@@ -8,7 +8,7 @@ export default function AiAssistantPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">Wikinet AI Assistant</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">CODEEX-FOCUS AI Assistant</h1>
         <p className="text-muted-foreground">Your intelligent study partner. Powered by Genkit.</p>
       </div>
 

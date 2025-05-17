@@ -14,7 +14,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">Welcome to FocusForge!</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">Welcome to CODEEX-FOCUS!</h1>
           <p className="text-muted-foreground">Here's your study overview for today.</p>
         </div>
         <Button asChild className="bg-primary hover:bg-primary/90">
@@ -51,14 +51,14 @@ export default function DashboardPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Brain className="h-6 w-6 text-primary" />
-              Wikinet AI Assistant
+              CODEEX-FOCUS AI Assistant
             </CardTitle>
             <CardDescription>Get instant help with your studies.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <p>Need a study plan, content summary, or quick answers? Wikinet AI is here to help you learn smarter.</p>
+            <p>Need a study plan, content summary, or quick answers? CODEEX-FOCUS AI is here to help you learn smarter.</p>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <Link href="/ai-assistant">Ask Wikinet AI</Link>
+              <Link href="/ai-assistant">Ask CODEEX-FOCUS AI</Link>
             </Button>
           </CardContent>
         </Card>

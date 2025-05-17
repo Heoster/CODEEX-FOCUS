@@ -23,7 +23,7 @@ export default function HomePage() {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-background text-foreground">
       <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      <p className="mt-4 text-lg">Loading FocusForge...</p>
+      <p className="mt-4 text-lg">Loading CODEEX-FOCUS...</p>
     </div>
   );
 }

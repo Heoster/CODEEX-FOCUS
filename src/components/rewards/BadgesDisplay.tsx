@@ -16,7 +16,7 @@ const mockBadges: Reward[] = [
   { id: '1', name: 'First Task Completed', description: 'You completed your first task!', icon: CheckCircle, achieved: false },
   { id: '2', name: 'Pomodoro Power', description: 'Completed 5 Pomodoro sessions.', icon: Star, achieved: false },
   { id: '3', name: 'Study Streak', description: 'Studied for 7 days in a row.', icon: Zap, achieved: false },
-  { id: '4', name: 'AI Collaborator', description: 'Used Wikinet AI 10 times.', icon: Trophy, achieved: false },
+  { id: '4', name: 'AI Collaborator', description: 'Used CODEEX-FOCUS AI 10 times.', icon: Trophy, achieved: false },
   { id: '5', name: 'Early Bird', description: 'Completed a task before 8 AM.', icon: Clock, achieved: false },
   { id: '6', name: 'Note Taker Pro', description: 'Created 10 notes.', icon: CheckCircle, achieved: false },
 ];

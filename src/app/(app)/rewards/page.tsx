@@ -27,7 +27,7 @@ export default function RewardsPage() {
       <Card className="shadow-xl">
         <CardHeader>
           <CardTitle>Leaderboard (Coming Soon)</CardTitle>
-          <CardDescription>See how you rank among other FocusForge users.</CardDescription>
+          <CardDescription>See how you rank among other CODEEX-FOCUS users.</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-center text-muted-foreground">

@@ -12,7 +12,7 @@ import {
   DialogClose,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { FocusForgeLogo } from '@/components/icons';
+import { CodeexFocusLogo } from '@/components/icons';
 import {
   LayoutDashboard,
   CalendarDays,
@@ -30,13 +30,13 @@ import { Progress } from '@/components/ui/progress';
 interface TourStep {
   title: string;
   content: React.ReactNode;
-  icon?: LucideIcon;
+  icon?: LucideIcon | React.FC<any>; // Allow regular Lucide icons or custom components like CodeexFocusLogo
 }
 
 const tourSteps: TourStep[] = [
   {
-    title: 'Welcome to FocusForge!',
-    icon: FocusForgeLogo,
+    title: 'Welcome to CODEEX-FOCUS!',
+    icon: CodeexFocusLogo,
     content: "Your ultimate digital companion for focused learning and productive planning. Let's take a quick tour of the main features.",
   },
   {
@@ -50,9 +50,9 @@ const tourSteps: TourStep[] = [
     content: 'Plan your studies effectively using the Study Planner. It features a Pomodoro Timer to help you stay focused during sessions and a calendar to schedule your study blocks.',
   },
   {
-    title: 'Wikinet AI Assistant',
+    title: 'CODEEX-FOCUS AI Assistant',
     icon: Brain,
-    content: 'Meet Wikinet AI, your intelligent study partner. Use it to generate personalized study plans, get summaries of complex content, or ask subject-specific questions.',
+    content: 'Meet CODEEX-FOCUS AI, your intelligent study partner. Use it to generate personalized study plans, get summaries of complex content, or ask subject-specific questions.',
   },
   {
     title: 'Tasks & Notes',
@@ -67,12 +67,12 @@ const tourSteps: TourStep[] = [
   {
     title: 'Application Settings',
     icon: Settings,
-    content: 'Customize your FocusForge experience in the Settings area. (More personalization options will be added soon!)',
+    content: 'Customize your CODEEX-FOCUS experience in the Settings area. (More personalization options will be added soon!)',
   },
   {
     title: "You're All Set!",
     icon: Rocket,
-    content: "You've completed the tour! We hope FocusForge helps you achieve your learning and productivity goals. Happy studying!",
+    content: "You've completed the tour! We hope CODEEX-FOCUS helps you achieve your learning and productivity goals. Happy studying!",
   },
 ];
 

@@ -1,4 +1,4 @@
-# Firebase Studio
+# CODEEX-FOCUS
 
 This is a NextJS starter in Firebase Studio.
 

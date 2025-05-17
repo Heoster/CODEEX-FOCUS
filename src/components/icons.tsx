@@ -7,11 +7,11 @@ export const Icons = {
   ),
 };
 
-export function FocusForgeLogo({ className }: { className?: string }) {
+export function CodeexFocusLogo({ className }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <Icons.Logo className="h-7 w-7 text-primary" />
-      <span className="text-xl font-semibold text-foreground">FocusForge</span>
+      <span className="text-xl font-semibold text-foreground">CODEEX-FOCUS</span>
     </div>
   );
 }

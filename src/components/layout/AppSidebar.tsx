@@ -14,13 +14,13 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { FocusForgeLogo } from '@/components/icons';
+import { CodeexFocusLogo } from '@/components/icons';
 import type { Dispatch, SetStateAction } from 'react';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/planner', label: 'Study Planner', icon: CalendarDays },
-  { href: '/ai-assistant', label: 'Wikinet AI', icon: Brain },
+  { href: '/ai-assistant', label: 'CODEEX-FOCUS AI', icon: Brain },
   { href: '/tasks-notes', label: 'Tasks & Notes', icon: ListChecks },
   { href: '/rewards', label: 'Rewards', icon: Award },
 ];
@@ -57,7 +57,7 @@ export function AppSidebar({ isOpen, setIsOpen }: AppSidebarProps) {
         )}
       >
         <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-4">
-          <FocusForgeLogo />
+          <CodeexFocusLogo />
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen(false)}>
             <X className="h-5 w-5" />
             <span className="sr-only">Close sidebar</span>
