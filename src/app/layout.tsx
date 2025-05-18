@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'CODEEX-FOCUS',
+  title: 'CODEEX-FOCUS', // Ensured title is clear
   description: 'Your ultimate digital companion for focused learning and productive planning.',
 };
 

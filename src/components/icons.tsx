@@ -1,9 +1,9 @@
 import type { LucideProps } from 'lucide-react';
-import { Target } from 'lucide-react'; // Changed from BrainCircuit to Target
+import { BrainCircuit } from 'lucide-react'; // Changed back to BrainCircuit
 
 export const Icons = {
   Logo: (props: LucideProps) => (
-    <Target {...props} /> // Changed from BrainCircuit to Target
+    <BrainCircuit {...props} /> // Changed back to BrainCircuit
   ),
 };
 
