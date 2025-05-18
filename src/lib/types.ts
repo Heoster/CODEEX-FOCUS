@@ -40,31 +40,36 @@ export interface ForumCategory {
   name: string;
   description: string;
   iconName: string;
-  topics: number; // Placeholder for topic count, managed in Firestore document
-  posts: number;  // Placeholder for post count, managed in Firestore document
+  topics: number; // Aggregate count, ideally managed by Cloud Functions or server-side logic
+  posts: number;  // Aggregate count, ideally managed by Cloud Functions or server-side logic
 }
 
 export interface Topic {
   id: string; // Document ID from Firestore
-  categoryId: string;
+  categoryId: string; // Links to a ForumCategory document ID
   title: string;
-  content: string; // Content of the first post
-  authorId: string; // User ID
-  authorName: string; // User display name
-  createdAt: Timestamp; // Firestore Timestamp
-  lastActivityAt: Timestamp; // Firestore Timestamp, updated on new reply
-  replyCount: number;
-  // viewCount?: number; // Optional
-  // isPinned?: boolean; // Optional
-  // isLocked?: boolean; // Optional
+  content: string; // Content of the first/original post
+  authorId: string; // User ID of the topic creator
+  authorName: string; // Display name of the topic creator
+  createdAt: Timestamp; // Firestore Timestamp for topic creation
+  lastActivityAt: Timestamp; // Firestore Timestamp, updated on new reply or topic creation
+  replyCount: number; // Number of replies to this topic
+  // Optional fields you might add later:
+  // viewCount?: number;
+  // isPinned?: boolean;
+  // isLocked?: boolean;
+  // tags?: string[];
 }
 
 export interface Post {
-  id: string; // Document ID from Firestore
-  topicId: string;
-  authorId: string;
-  authorName: string;
-  content: string; // Markdown or plain text
-  createdAt: Timestamp; // Firestore Timestamp
-  updatedAt?: Timestamp; // Firestore Timestamp
+  id: string; // Document ID from Firestore (for the reply itself)
+  topicId: string; // ID of the parent Topic document
+  authorId: string; // User ID of the post author
+  authorName: string; // Display name of the post author
+  content: string; // Content of the post (Markdown or plain text)
+  createdAt: Timestamp; // Firestore Timestamp for post creation
+  updatedAt?: Timestamp; // Firestore Timestamp, if post editing is allowed
+  // Optional fields:
+  // reactions?: { [emoji: string]: string[] }; // UIDs of users who reacted
 }
+
