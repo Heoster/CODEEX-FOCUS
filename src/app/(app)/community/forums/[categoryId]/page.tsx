@@ -3,25 +3,21 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, Construction, Loader2, AlertTriangle, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertTriangle, MessageSquare, PlusCircle, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { doc, getDoc, type FirestoreError } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import type { LucideIcon } from 'lucide-react'; // For potential icon display
-
-// A simplified type for what we expect from Firestore for a category
-interface ForumCategoryData {
-  name: string;
-  description: string;
-  iconName?: string; // Optional, in case you want to display it
-}
+import type { LucideIcon } from 'lucide-react';
+import type { ForumCategory as ForumCategoryData } from '@/lib/types';
+import { NewTopicDialog } from '@/components/community/NewTopicDialog'; // New import
 
 // Placeholder for icon mapping if you decide to use iconName from Firestore
 const iconMap: Record<string, LucideIcon> = {
   MessageSquare,
-  // Add other icons used in your forum_categories data here
+  BookOpen, // Added for potential use
+  // Add other icons used in your forum_categories data here (e.g., Brain, FileText, Laptop)
 };
 
 export default function ForumCategoryPage() {
@@ -31,6 +27,7 @@ export default function ForumCategoryPage() {
   const [category, setCategory] = useState<ForumCategoryData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isNewTopicDialogOpen, setIsNewTopicDialogOpen] = useState(false);
 
   useEffect(() => {
     if (!categoryId || !db) {
@@ -105,7 +102,6 @@ export default function ForumCategoryPage() {
   }
 
   if (!category) {
-     // This case should ideally be handled by the error state if category not found
     return (
       <div className="space-y-6 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
          <div className="flex items-center gap-4">
@@ -147,30 +143,34 @@ export default function ForumCategoryPage() {
       </div>
       <p className="text-lg text-muted-foreground ml-12 pl-1">{category.description}</p>
 
+      <div className="flex justify-end mb-6">
+        <Button onClick={() => setIsNewTopicDialogOpen(true)} className="bg-primary hover:bg-primary/90">
+          <PlusCircle className="mr-2 h-5 w-5" />
+          New Topic
+        </Button>
+      </div>
+
+      <NewTopicDialog
+        isOpen={isNewTopicDialogOpen}
+        onOpenChange={setIsNewTopicDialogOpen}
+        categoryId={categoryId}
+      />
+
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Construction className="h-6 w-6 text-primary" />
-            Topics & Posts - Under Construction
-          </CardTitle>
-          <CardDescription>
-            Listing topics, creating new posts, and viewing individual posts for the <span className="font-semibold text-foreground">{category.name}</span> category is currently under active development.
-          </CardDescription>
+          <CardTitle>Topics</CardTitle>
         </CardHeader>
         <CardContent className="text-center py-12">
-          <Construction className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
-          <p className="text-lg text-muted-foreground mb-2">
-            You are viewing the category: <span className="font-semibold text-foreground">{category.name}</span>
-          </p>
-          <p className="text-muted-foreground">
-            Please check back soon for full functionality, including topic lists and the ability to post.
-          </p>
-          <Button asChild className="mt-6 bg-primary hover:bg-primary/90">
-            <Link href="/community/forums">Back to Forums List</Link>
-          </Button>
+            {/* Placeholder for topic list. In a real app, you'd fetch and map topics here. */}
+            <BookOpen className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
+            <p className="text-lg text-muted-foreground mb-2">
+            No topics in <span className="font-semibold text-foreground">{category.name}</span> yet.
+            </p>
+            <p className="text-muted-foreground">
+            Be the first to start a discussion!
+            </p>
         </CardContent>
       </Card>
     </div>
   );
 }
-
