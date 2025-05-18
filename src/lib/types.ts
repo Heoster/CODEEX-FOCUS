@@ -1,4 +1,6 @@
 
+import type { Timestamp } from 'firebase/firestore';
+
 export interface Task {
   id: string;
   text: string;
@@ -32,36 +34,37 @@ export interface Note {
   updatedAt: Date;
 }
 
-// New types for Forums
+// Updated types for Forums
 export interface ForumCategory {
-  id: string;
+  id: string; // Document ID from Firestore
   name: string;
   description: string;
   iconName: string;
-  topics: number; // Placeholder for topic count
-  posts: number;  // Placeholder for post count
+  topics: number; // Placeholder for topic count, managed in Firestore document
+  posts: number;  // Placeholder for post count, managed in Firestore document
 }
 
 export interface Topic {
-  id: string;
+  id: string; // Document ID from Firestore
   categoryId: string;
   title: string;
+  content: string; // Content of the first post
   authorId: string; // User ID
   authorName: string; // User display name
-  createdAt: Date;
-  lastReplyAt?: Date;
-  postCount: number;
+  createdAt: Timestamp; // Firestore Timestamp
+  lastActivityAt: Timestamp; // Firestore Timestamp, updated on new reply
+  replyCount: number;
   // viewCount?: number; // Optional
   // isPinned?: boolean; // Optional
   // isLocked?: boolean; // Optional
 }
 
 export interface Post {
-  id:string;
+  id: string; // Document ID from Firestore
   topicId: string;
   authorId: string;
   authorName: string;
   content: string; // Markdown or plain text
-  createdAt: Date;
-  updatedAt?: Date;
+  createdAt: Timestamp; // Firestore Timestamp
+  updatedAt?: Timestamp; // Firestore Timestamp
 }
