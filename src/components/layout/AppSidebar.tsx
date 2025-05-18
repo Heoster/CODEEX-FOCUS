@@ -21,7 +21,7 @@ import type { Dispatch, SetStateAction } from 'react';
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/planner', label: 'Study Planner', icon: CalendarDays },
-  { href: '/ai-assistant', label: 'CODEEX-FOCUS AI', icon: Brain },
+  { href: '/ai-assistant', label: 'CODEEX AI', icon: Brain },
   { href: '/tasks-notes', label: 'Tasks & Notes', icon: ListChecks },
   { href: '/rewards', label: 'Rewards', icon: Award },
   { href: '/community', label: 'Community', icon: Users }, // Added Community

@@ -51,9 +51,9 @@ const tourSteps: TourStep[] = [
     content: 'Plan your studies effectively using the Study Planner. It features a Pomodoro Timer to help you stay focused during sessions and a calendar to schedule your study blocks.',
   },
   {
-    title: 'CODEEX-FOCUS AI Assistant',
+    title: 'CODEEX AI Assistant',
     icon: Brain,
-    content: 'Meet CODEEX-FOCUS AI, your intelligent study partner. Use it to generate personalized study plans, get summaries of complex content, or ask subject-specific questions.',
+    content: 'Meet CODEEX AI, your intelligent study partner. Use it to generate personalized study plans, get summaries of complex content, or ask subject-specific questions.',
   },
   {
     title: 'Tasks & Notes',

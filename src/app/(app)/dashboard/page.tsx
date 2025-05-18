@@ -49,14 +49,14 @@ export default function DashboardPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Brain className="h-6 w-6 text-primary" />
-              CODEEX-FOCUS AI Assistant
+              CODEEX AI Assistant
             </CardTitle>
             <CardDescription>Get instant help with your studies.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <p>Need a study plan, content summary, or quick answers? CODEEX-FOCUS AI is here to help you learn smarter.</p>
+            <p>Need a study plan, content summary, or quick answers? CODEEX AI is here to help you learn smarter.</p>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <Link href="/ai-assistant">Ask CODEEX-FOCUS AI</Link>
+              <Link href="/ai-assistant">Ask CODEEX AI</Link>
             </Button>
           </CardContent>
         </Card>

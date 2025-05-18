@@ -16,7 +16,7 @@ interface AppHeaderProps {
 function getTitleFromPath(pathname: string): string {
   if (pathname.startsWith('/dashboard')) return 'Dashboard';
   if (pathname.startsWith('/planner')) return 'Study Planner';
-  if (pathname.startsWith('/ai-assistant')) return 'CODEEX-FOCUS AI Assistant';
+  if (pathname.startsWith('/ai-assistant')) return 'CODEEX AI Assistant';
   if (pathname.startsWith('/tasks-notes')) return 'Tasks & Notes';
   if (pathname.startsWith('/rewards')) return 'Motivation & Rewards';
   if (pathname.startsWith('/community/forums')) return 'Community Hub - Forums';
