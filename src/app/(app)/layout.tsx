@@ -52,7 +52,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </main>
         <footer className="border-t border-border bg-background/95 py-6 px-4 text-center text-sm text-muted-foreground sm:px-6 md:px-8">
           <p className="mb-1">
-            CODEEX-FOCUS App by Firebase Studio AI
+            this website id developed by heoster
           </p>
           <Link
             href="mailto:feedback@example.com?subject=CODEEX-FOCUS%20Feedback"
