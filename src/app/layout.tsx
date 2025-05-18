@@ -16,8 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'CODEEX-FOCUS', // Ensured title is clear
+  title: 'CODEEX-FOCUS',
   description: 'Your ultimate digital companion for focused learning and productive planning.',
+  icons: {
+    icon: '/favicon.ico', // Standard path for favicon in the public folder
+  },
 };
 
 export default function RootLayout({
