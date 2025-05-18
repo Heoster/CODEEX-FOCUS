@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import { MessageSquare, PlusCircle, Search, Users, FileText, Brain, Beaker, Laptop, FlaskConical } from 'lucide-react';
+import { MessageSquare, PlusCircle, Search, Users, FileText, Brain, Beaker, Laptop, FlaskConical, Construction } from 'lucide-react';
 import Link from 'next/link';
 import type { LucideIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -31,6 +31,7 @@ const iconMap: Record<string, LucideIcon> = {
   Beaker,
   FlaskConical,
   Search,
+  Construction, // Added for placeholder
 };
 
 
@@ -40,6 +41,11 @@ export default function ForumsPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!db) {
+      setError("Firestore database is not available. Please check Firebase configuration.");
+      setLoading(false);
+      return;
+    }
     const categoriesCollection = collection(db, 'forum_categories');
     
     const unsubscribe = onSnapshot(categoriesCollection, (snapshot) => {
@@ -131,13 +137,25 @@ export default function ForumsPage() {
         </div>
       )}
       {!loading && !error && forumCategories.length === 0 && (
-         <p className="text-center text-sm text-muted-foreground mt-8">
-          No forum categories found. An admin may need to create some in Firestore!
-        </p>
+         <Card className="text-center py-12">
+          <CardHeader>
+            <CardTitle className="flex items-center justify-center gap-2">
+             <Construction className="h-10 w-10 text-primary" /> No Forum Categories Found
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">
+              It looks like there are no forum categories set up in the database yet.
+            </p>
+            <p className="text-sm text-muted-foreground mt-2">
+              An administrator may need to create some in the Firestore 'forum_categories' collection.
+            </p>
+          </CardContent>
+         </Card>
       )}
-       {forumCategories.length > 0 && (
+       {(forumCategories.length > 0 || loading) && (
          <p className="text-center text-sm text-muted-foreground mt-8">
-          Individual category views and posting are currently under development.
+          Individual category views and the ability to create new posts are currently under development.
         </p>
        )}
     </div>
