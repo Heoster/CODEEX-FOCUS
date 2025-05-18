@@ -1,9 +1,10 @@
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:4215366625.
 
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button} from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, Loader2, MessageCircle, Construction } from 'lucide-react';
+import { ArrowLeft, Loader2, MessageCircle, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation'; // Added useRouter
 import { useEffect, useState } from 'react';
@@ -11,6 +12,7 @@ import { doc, getDoc, type Timestamp, collection, query, where, orderBy, onSnaps
 import { db } from '@/lib/firebase';
 import type { Topic as TopicData, Post as PostData } from '@/lib/types';
 import { format } from 'date-fns';
+import { CardFooter } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/use-toast';
@@ -165,7 +167,7 @@ export default function TopicPage() {
   if (!topic) {
     return (
       <div className="space-y-6 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4"> {/* This div was causing the parsing error */}
           <Button variant="outline" size="icon" onClick={() => router.back()}>
             <ArrowLeft className="h-4 w-4" />
             <span className="sr-only">Back</span>
@@ -176,11 +178,10 @@ export default function TopicPage() {
           <CardContent className="text-center py-12">
             <p className="text-lg text-muted-foreground">The requested topic could not be found.</p>
              <Button asChild className="mt-6">
-              <Link href={`/community/forums/${topic?.categoryId || ''}`}>Back to Category</Link>
-            </Button>
+              <Link href={`/community/forums/${topic?.categoryId || ''}`}>Back to Category</Link>            </Button>
           </CardContent>
         </Card>
-      </div>
+     </div>
     );
   }
   

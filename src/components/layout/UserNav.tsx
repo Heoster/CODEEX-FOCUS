@@ -16,13 +16,13 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { auth } from '@/lib/firebase';
 import { signOut } from 'firebase/auth';
-import { LogOut, Settings, UserCircle, Lightbulb } from 'lucide-react'; // Added Lightbulb
+import { LogOut, Settings, UserCircle, Lightbulb, Mail } from 'lucide-react'; // Added Mail
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 
 interface UserNavProps {
-  setIsTourOpen?: Dispatch<SetStateAction<boolean>>; // Optional for now
+  setIsTourOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export function UserNav({ setIsTourOpen }: UserNavProps) {
@@ -42,7 +42,7 @@ export function UserNav({ setIsTourOpen }: UserNavProps) {
   };
 
   if (!user) {
-    return null; // Or a login button if appropriate for the context
+    return null;
   }
 
   const getInitials = (name: string | null | undefined) => {
@@ -93,6 +93,12 @@ export function UserNav({ setIsTourOpen }: UserNavProps) {
               <span>App Tour</span>
             </DropdownMenuItem>
           )}
+          <DropdownMenuItem asChild>
+            <Link href="mailto:feedback@example.com?subject=CODEEX-FOCUS%20Feedback">
+              <Mail className="mr-2 h-4 w-4" />
+              <span>Feedback</span>
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleSignOut}>

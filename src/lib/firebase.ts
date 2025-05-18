@@ -2,6 +2,7 @@
 import { initializeApp, getApps, getApp, type FirebaseOptions } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'; // Added Firestore import
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 
 const firebaseApiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
 const firebaseAuthDomain = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
@@ -22,8 +23,11 @@ const requiredEnvVars: Record<string, string | undefined> = {
 };
 
 const missingKeys = Object.entries(requiredEnvVars)
-  .filter(([, value]) => !value)
+ .filter(([, value]) => !value)
   .map(([key]) => key);
+
+// ... rest of your code ...
+
 
 if (missingKeys.length > 0) {
   const errorMessage =

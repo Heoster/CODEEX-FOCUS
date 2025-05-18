@@ -12,7 +12,7 @@ export default function DashboardPage() {
   const pointsEarned = 0;
 
   return (
-    <div className="space-y-6 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
+    <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Welcome to CODEEX-FOCUS!</h1>
@@ -23,7 +23,7 @@ export default function DashboardPage() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <OverviewCard
           title="Upcoming Tasks"
           value={upcomingTasks}
@@ -54,7 +54,7 @@ export default function DashboardPage() {
             <CardDescription>Get instant help with your studies.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <p>Need a study plan, content summary, or quick answers? CODEEX AI is here to help you learn smarter.</p>
+            <p className="text-muted-foreground">Need a study plan, content summary, or quick answers? CODEEX AI is here to help you learn smarter.</p>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
               <Link href="/ai-assistant">Ask CODEEX AI</Link>
             </Button>

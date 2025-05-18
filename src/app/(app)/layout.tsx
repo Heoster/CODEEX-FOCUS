@@ -9,6 +9,7 @@ import { AppHeader } from '@/components/layout/AppHeader';
 import { useAuth } from '@/context/AuthContext';
 import { Loader2 } from 'lucide-react';
 import { AppTourDialog } from '@/components/app-tour/AppTourDialog'; // Import the tour dialog
+import Link from 'next/link';
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -25,10 +26,10 @@ export default function AppLayout({ children }: { children: ReactNode }) {
 
   // Effect to show tour on first visit (example using localStorage)
   // useEffect(() => {
-  //   const tourShown = localStorage.getItem('focusForgeTourShown');
+  //   const tourShown = localStorage.getItem('codeexFocusTourShown'); // Updated key
   //   if (!tourShown && user) { // Show only if logged in and not shown before
   //     setIsTourOpen(true);
-  //     localStorage.setItem('focusForgeTourShown', 'true');
+  //     localStorage.setItem('codeexFocusTourShown', 'true');
   //   }
   // }, [user]); // Rerun when user context changes
 
@@ -45,12 +46,23 @@ export default function AppLayout({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen bg-background">
       <AppSidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
       <div className="flex flex-1 flex-col md:ml-64">
-        <AppHeader setSidebarOpen={setSidebarOpen} setIsTourOpen={setIsTourOpen} /> {/* Pass setIsTourOpen */}
+        <AppHeader setSidebarOpen={setSidebarOpen} setIsTourOpen={setIsTourOpen} />
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
           {children}
         </main>
+        <footer className="border-t border-border bg-background/95 py-6 px-4 text-center text-sm text-muted-foreground sm:px-6 md:px-8">
+          <p className="mb-1">
+            CODEEX-FOCUS App by Firebase Studio AI
+          </p>
+          <Link
+            href="mailto:feedback@example.com?subject=CODEEX-FOCUS%20Feedback"
+            className="hover:text-primary hover:underline"
+          >
+            Send Feedback
+          </Link>
+        </footer>
       </div>
-      <AppTourDialog isOpen={isTourOpen} onOpenChange={setIsTourOpen} /> {/* Render tour dialog */}
+      <AppTourDialog isOpen={isTourOpen} onOpenChange={setIsTourOpen} />
     </div>
   );
 }

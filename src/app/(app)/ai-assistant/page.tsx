@@ -10,11 +10,11 @@ export default function AiAssistantPage() {
     <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">CODEEX AI Assistant</h1>
-        <p className="text-muted-foreground">Your intelligent study partner. Powered by Genkit.</p>
+        <p className="text-lg text-muted-foreground">Your intelligent study partner. Powered by Genkit.</p>
       </div>
 
       <Tabs defaultValue="study-plan" className="w-full">
-        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-6">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-6 shadow-sm">
           <TabsTrigger value="study-plan" className="text-base py-2.5">
             <Wand2 className="mr-2 h-5 w-5" /> Study Plan
           </TabsTrigger>
