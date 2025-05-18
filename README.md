@@ -12,13 +12,13 @@ CODEEX-FOCUS is your ultimate digital companion designed for focused learning, p
     *   Summarize content for quick understanding.
     *   Get answers to subject-specific questions.
 *   **Tasks & Notes**: Manage your to-do list and capture your thoughts and lecture notes with a Markdown editor.
-*   **Motivation & Rewards**: Track your progress, earn badges (placeholder), and see your position on a community leaderboard (placeholder).
+*   **Motivation & Rewards**: Track your progress, earn badges, and see your position on a community leaderboard.
 *   **Community Hub**:
-    *   **Discussion Forums**: Engage in subject-specific or general discussions. (Real-time updates via Firestore)
-    *   **Leaderboard**: See how you rank among peers.
+    *   **Discussion Forums**: Engage in subject-specific or general discussions (Real-time updates via Firestore for categories and topics).
+    *   **Leaderboard**: See how you rank among peers (Placeholder page).
     *   *Study Groups & Shared Resources (Coming Soon)*
 *   **User Authentication**: Secure login and registration system powered by Firebase Authentication.
-*   **Settings**: Customize your profile, appearance (dark/light mode), and notification preferences.
+*   **Settings**: Customize your profile (display name, password), appearance (dark/light mode), and placeholder notification preferences.
 *   **App Tour**: A guided tour for new users to discover app features.
 
 ## 🛠️ Tech Stack
@@ -60,6 +60,8 @@ CODEEX-FOCUS is your ultimate digital companion designed for focused learning, p
 3.  **Set up Firebase:**
     *   Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project (or use an existing one).
     *   Add a Web app to your Firebase project.
+    *   Enable **Authentication** (Email/Password sign-in method).
+    *   Enable **Firestore Database**.
     *   Go to Project settings (gear icon) > General tab.
     *   Scroll down to "Your apps" and find your Web app.
     *   Under "SDK setup and configuration", choose "Config". You'll see your Firebase configuration object.
@@ -77,7 +79,7 @@ CODEEX-FOCUS is your ultimate digital companion designed for focused learning, p
         NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
         NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-YOUR_MEASUREMENT_ID # Optional, for Analytics
         ```
-    *   **Important:** Ensure Firestore is enabled in your Firebase project for the community features.
+    *   **Important:** Ensure Firestore is enabled and you have set up appropriate [Firestore Security Rules](https://firebase.google.com/docs/firestore/security/get-started) for the `forum_categories` and `forum_topics` collections. Example rules are provided in the Firebase setup guide within the app if you were guided by the AI.
 
 5.  **Set up Genkit (if using AI features locally beyond default Firebase models):**
     *   Follow the Genkit documentation for setting up any necessary API keys or credentials for the AI models you intend to use (e.g., Google AI Studio API key if using Gemini). These might also go into your `.env.local` or be set up via `gcloud auth application-default login`.
@@ -112,6 +114,27 @@ In the project directory, you can run:
 *   `npm run start`: Starts the production server.
 *   `npm run lint`: Lints the codebase using Next.js's built-in ESLint configuration.
 *   `npm run typecheck`: Runs TypeScript to check for type errors.
+
+## 🚀 Deployment
+
+To deploy your CODEEX-FOCUS app and make it accessible via a public URL from your GitHub repository, you can use platforms like [Vercel](https://vercel.com/) (recommended for Next.js) or [Netlify](https://www.netlify.com/).
+
+**General Steps:**
+
+1.  **Push your code to a GitHub repository.**
+2.  **Sign up/Log in** to your chosen hosting platform (e.g., Vercel).
+3.  **Connect your GitHub account** to the hosting platform.
+4.  **Import your GitHub repository** into a new project on the platform.
+5.  **Configure Project Settings:**
+    *   The platform will usually auto-detect that it's a Next.js project.
+    *   **Build Command:** `npm run build` (or `yarn build`)
+    *   **Output Directory:** `.next`
+    *   **Install Command:** `npm install` (or `yarn install`)
+6.  **Crucial: Set Up Environment Variables:**
+    *   You **MUST** add your Firebase configuration (and any other necessary API keys like for Genkit models) as environment variables in your hosting platform's project settings.
+    *   These are the same `NEXT_PUBLIC_FIREBASE_...` variables that you have in your local `.env.local` file.
+    *   **DO NOT commit your `.env.local` file to GitHub.** Keep your secret keys secure by using the environment variable settings provided by your hosting platform.
+7.  **Deploy:** The platform will build your application and provide you with a live URL. Subsequent pushes to your connected GitHub branch (e.g., `main` or `master`) will typically trigger automatic redeployments.
 
 ## 📁 Folder Structure
 
@@ -156,3 +179,4 @@ This project is currently under a placeholder license. If open-sourced, it will 
 
 This website is developed by heoster.
 For feedback, please use the "Send Feedback" option in the app or contact [90freeplay98@gmail.com](mailto:90freeplay98@gmail.com).
+```
