@@ -52,10 +52,10 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </main>
         <footer className="border-t border-border bg-background/95 py-6 px-4 text-center text-sm text-muted-foreground sm:px-6 md:px-8">
           <p className="mb-1">
-            this website id developed by heoster
+            This website id developed by Heoster.
           </p>
           <Link
-            href="mailto:feedback@example.com?subject=CODEEX-FOCUS%20Feedback"
+            href="mailto:90freeplay98@gmail.com"
             className="hover:text-primary hover:underline"
           >
             Send Feedback
