@@ -1,23 +1,23 @@
+'use client';
 
-import { GenerateStudyPlanForm } from '@/components/ai-assistant/GenerateStudyPlanForm';
+import React from 'react';
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Newspaper, HelpCircle } from 'lucide-react';
+
 import { SummarizeContentForm } from '@/components/ai-assistant/SummarizeContentForm';
 import { AnswerQuestionForm } from '@/components/ai-assistant/AnswerQuestionForm';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Wand2, Newspaper, HelpCircle } from 'lucide-react';
 
 export default function AiAssistantPage() {
   return (
     <div className="space-y-8 animate-in fade-in-0 slide-in-from-top-4 duration-500 ease-out">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">CODEEX AI Assistant</h1>
-        <p className="text-lg text-muted-foreground">Your intelligent study partner. Powered by Genkit.</p>
+        <p className="text-lg text-muted-foreground">Your intelligent study partner.</p>
       </div>
 
-      <Tabs defaultValue="study-plan" className="w-full">
-        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-6 shadow-sm">
-          <TabsTrigger value="study-plan" className="text-base py-2.5">
-            <Wand2 className="mr-2 h-5 w-5" /> Study Plan
-          </TabsTrigger>
+      <Tabs defaultValue="summarize" className="w-full">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 mb-6 shadow-sm">
           <TabsTrigger value="summarize" className="text-base py-2.5">
             <Newspaper className="mr-2 h-5 w-5" /> Summarizer
           </TabsTrigger>
@@ -26,12 +26,10 @@ export default function AiAssistantPage() {
           </TabsTrigger>
         </TabsList>
         
-        <TabsContent value="study-plan" className="animate-in fade-in-0 duration-500">
-          <GenerateStudyPlanForm />
-        </TabsContent>
         <TabsContent value="summarize" className="animate-in fade-in-0 duration-500">
           <SummarizeContentForm />
         </TabsContent>
+
         <TabsContent value="qa" className="animate-in fade-in-0 duration-500">
           <AnswerQuestionForm />
         </TabsContent>

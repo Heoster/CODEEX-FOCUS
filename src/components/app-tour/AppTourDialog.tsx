@@ -87,7 +87,7 @@ interface AppTourDialogProps {
   onOpenChange: (isOpen: boolean) => void;
 }
 
-export function AppTourDialog({ isOpen, onOpenChange }: AppTourDialogProps) {
+export default function AppTourDialog({ isOpen, onOpenChange }: AppTourDialogProps) {
   const [currentStep, setCurrentStep] = useState(0);
 
   const handleNext = () => {
